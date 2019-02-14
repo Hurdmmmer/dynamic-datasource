@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dynamicdatasource.dao.UserMapper">
+
+    <insert id="insert">
+      INSERT INTO
+        db_user (username, password, mobile, email)
+      VALUES
+        (#{username} ,#{password} ,#{mobile} ,#{email,jdbcType=VARCHAR}  )
+    </insert>
+
+
+    <select id="findAll" resultType="com.example.dynamicdatasource.entity.User">
+      SELECT * FROM db_user
+    </select>
+
+
+
+    <select id="findByUsername" resultType="com.example.dynamicdatasource.entity.User">
+      SELECT * FROM db_user WHERE username = #{username}
+    </select>
+
+
+
+    <update id="updateByUsername">
+      UPDATE db_user
+      <set>
+          <if test="password != null and password != ''">
+              password = #{password}
+          </if>
+          <if test="mobile != null and mobile != ''">
+              mobile = #{mobile}
+          </if>
+          <if test="email != null and email != ''">
+              email = #{email}
+          </if>
+      </set>
+      WHERE username = #{username}
+    </update>
+</mapper>

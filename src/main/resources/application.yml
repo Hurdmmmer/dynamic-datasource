@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    sources:
+      master:
+        jdbc-url: jdbc:mysql://192.168.179.128:3307/test001?useUnicode=true&characterEncoding=utf-8&useSSL=false
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.jdbc.Driver
+      slave1:
+        jdbc-url: jdbc:mysql://192.168.179.128:3306/test001?useUnicode=true&characterEncoding=utf-8&useSSL=false
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.jdbc.Driver
+      slave2:
+        jdbc-url: jdbc:mysql://192.168.179.128:3308/test001?useUnicode=true&characterEncoding=utf-8&useSSL=false
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  type-aliases-package: com.example.dynamicdatasource.entity
+  mapper-locations: classpath:/mapper/*.xml
+
+logging:
+  level:
+    com.example.dynamicdatasource: debug
